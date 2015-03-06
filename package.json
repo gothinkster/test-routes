@@ -1,0 +1,17 @@
+{
+  "name": "test-routes",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node --harmony app.js",
+    "test": "mocha --harmony"
+  },
+  "dependencies": {
+    "koa": "^0.6.0",
+    "koa-body": "^1.1.0",
+    "koa-compress": "^1.0.6",
+    "koa-cors": "0.0.14",
+    "koa-logger": "^1.2.0",
+    "koa-router": "^4.2.0"
+  }
+}
