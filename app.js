@@ -13,6 +13,11 @@ app.use(logger());
 app.use(cors());
 app.use(router(app));
 
+app.get('/', function *() {
+  this.type = 'html';
+  this.body = 'Welcome to the <a href="https://thinkster.io">Thinkster.io</a> Test server! Checkout the code at <a href="https://github.com/GoThinkster/test-routes">Github!</a>';
+});
+
 app.get('/hello', function *() {
   this.body = {message: 'Thanks for using Thinkster, you\'re awesome ;)'};
 });
