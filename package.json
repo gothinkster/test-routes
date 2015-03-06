@@ -2,6 +2,9 @@
   "name": "test-routes",
   "version": "0.0.0",
   "private": true,
+  "engines": {
+    "node": "0.12.x"
+  },
   "scripts": {
     "start": "node --harmony app.js",
     "test": "mocha --harmony"
