@@ -28,18 +28,18 @@ router.get('/', function *() {
   this.body = 'Welcome to the <a href="https://thinkster.io">Thinkster.io</a> Test server! Checkout the code at <a href="https://github.com/GoThinkster/test-routes">Github!</a>';
 });
 
-router.get('/hello', function *() {
+router.get('/test/hello', function *() {
   this.body = {message: 'Thanks for using Thinkster, you\'re awesome ;)'};
 });
 
-router.post('/uppercase', koaBody(), function *() {
+router.post('/test/uppercase', koaBody(), function *() {
   let msg = this.request.body.message;
   assert(msg, 200, 'PLZ SPECIFY A MESSAGE!');
 
   this.body = {message: msg.toUpperCase()};
 });
 
-router.post('/register', koaBody(), hasUsernameAndPassword, function *register() {
+router.post('/auth/register', koaBody(), hasUsernameAndPassword, function *register() {
 
   var user = User.find(this.username);
   assert(!user, 422, 'User already exists!');
@@ -54,7 +54,7 @@ router.post('/register', koaBody(), hasUsernameAndPassword, function *register()
   };
 });
 
-router.post('/login', koaBody(), hasUsernameAndPassword, function *login() {
+router.post('/auth/login', koaBody(), hasUsernameAndPassword, function *login() {
 
   var user = User.find(this.username);
   assert(!!user, 422, 'No user found');
@@ -69,7 +69,7 @@ router.post('/login', koaBody(), hasUsernameAndPassword, function *login() {
 
 });
 
-router.get('/secret', authenticate, function *() {
+router.get('/auth/secret', authenticate, function *() {
   this.body = {message: 'Congrats '+this.user.username+', you\'re authed!'};
 });
 
