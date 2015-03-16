@@ -4,13 +4,13 @@ var koa = require('koa');
 var compress = require('koa-compress');
 var logger = require('koa-logger');
 var cors = require('koa-cors');
-
+var httpError = require('http-errors');
 
 function *handleErrors(next) {
   try {
     yield next;
   } catch (err) {
-    this.status = err.status;
+    this.status = err.status || 500;
     this.body = {message: err.message};
   }
 }
@@ -25,9 +25,10 @@ app.use(cors({
 app.use(require('./routes').routes());
 app.use(compress());
 
-app.on('error', function(error) {
-  console.error(error.message);
-});
+// app.on('error', function(error) {
+//   console.error(error.message);
+//   // console.error(error.stack)
+// });
 
 
 
