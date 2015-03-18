@@ -20,7 +20,7 @@ var app = koa();
 app.use(logger());
 app.use(handleErrors);
 app.use(cors({
-  headers: ['Authorization', 'Origin', 'X-Requested-With', 'Content-Type', 'Accept'],
+  headers: ['Authorization', 'Origin', 'X-Requested-With', 'Content-Type', 'Accept', 'x-csrf-token'],
 }));
 app.use(require('./routes').routes());
 app.use(compress());
